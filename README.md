@@ -19,14 +19,14 @@ Pada sistem ini:
 
 ### 2. Membership Function
 Suhu dibagi menjadi tiga himpunan fuzzy:
-- **Dingin**: 20Â°C â€“ 25Â°C
-- **Hangat**: 25Â°C â€“ 30Â°C
-- **Panas**: >30Â°C
+- **Dingin**: 20°C - 25°C
+- **Hangat**: 25°C - 30°C
+- **Panas**: >30°C
 
 Output berupa duty cycle PWM motor:
-- **Dingin** â†’ Motor mati, LED hijau menyala
-- **Hangat** â†’ Motor putar sedang, LED kuning menyala
-- **Panas** â†’ Motor putar cepat, LED merah menyala
+- **Dingin** -> Motor mati, LED hijau menyala
+- **Hangat** -> Motor putar sedang, LED kuning menyala
+- **Panas** -> Motor putar cepat, LED merah menyala
 
 ### 3. Transistor TIP41 sebagai Driver Motor
 Transistor TIP41 digunakan sebagai **saklar elektronik** dan **penguat arus**. ESP32 mengeluarkan sinyal PWM ke basis transistor melalui resistor. Motor terhubung pada kolektor, dan emitter ke ground. Dioda flyback dipasang paralel motor untuk mencegah tegangan induksi balik yang dapat merusak komponen.
