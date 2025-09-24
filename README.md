@@ -133,6 +133,124 @@ Fuzzy Logic adalah metode komputasi yang meniru cara berpikir manusia dalam meng
 Alih-alih hanya menggunakan nilai biner (0 atau 1), fuzzy menggunakan derajat keanggotaan antara 0 hingga 1. 
 Dalam sistem dehumidifier cerdas, fuzzy logic dapat digunakan untuk menentukan kecepatan kipas berdasarkan suhu dan kelembapan ruangan.
 
+
+
+## Fungsi Keanggotaan
+
+## Suhu (T, °C)
+
+μRendah(T) =
+- 1,                   jika T ≤ 22
+- (24 − T) / 2,        jika 22 < T < 24
+- 0,                   jika T ≥ 24
+
+μSedang(T) =
+- 0,                   jika T ≤ 24 atau T ≥ 30
+- (T − 24) / 3,        jika 24 < T < 27
+- (30 − T) / 3,        jika 27 ≤ T < 30
+
+μTinggi(T) =
+- 0,                   jika T ≤ 28
+- (T − 28) / 2,        jika 28 < T < 30
+- 1,                   jika T ≥ 30
+
+---
+
+## Kelembapan (H, %RH)
+
+μKering(H) =
+- 1,                   jika H ≤ 35
+- (40 − H) / 5,        jika 35 < H < 40
+- 0,                   jika H ≥ 40
+
+μNyaman(H) =
+- 0,                   jika H ≤ 40 atau H ≥ 60
+- (H − 40) / 10,       jika 40 < H < 50
+- (60 − H) / 10,       jika 50 ≤ H < 60
+
+μLembap(H) =
+- 0,                   jika H ≤ 55
+- (H − 55) / 5,        jika 55 < H < 60
+- 1,                   jika H ≥ 60
+
+---
+
+## Output (Kecepatan Kipas → Nilai PWM 0–255)
+
+- **Lambat** = 80  
+- **Sedang** = 160  
+- **Cepat** = 255  
+
+---
+
+## Rule Base (9 Aturan)
+
+1. Rendah & Kering → Lambat  
+2. Rendah & Nyaman → Lambat  
+3. Rendah & Lembap → Sedang  
+4. Sedang & Kering → Lambat  
+5. Sedang & Nyaman → Sedang  
+6. Sedang & Lembap → Cepat  
+7. Tinggi & Kering → Sedang  
+8. Tinggi & Nyaman → Cepat  
+9. Tinggi & Lembap → Cepat  
+
+---
+
+## Perhitungan Contoh
+
+Metode agregasi rule:  
+- Evaluasi kondisi (AND = min)  
+- Defuzzifikasi: weighted average (centroid sederhana)  
+
+Output = ( Σ μrule × z ) / ( Σ μrule )
+
+---
+
+### Skenario 1 — Dingin & Kering
+
+- Input: Suhu rendah, kelembapan kering  
+- Fuzzifikasi: hanya Rendah & Kering aktif → μ = 1  
+- Output: Lambat (80)  
+
+Output = (1 × 80) / 1 = 80  
+
+**Hasil: PWM = 80 (Lambat)**  
+
+---
+
+### Skenario 2 — Mixed (dua rule aktif)
+
+Contoh: Suhu sedang, kelembapan 58%  
+
+Fuzzifikasi kelembapan:  
+- μNyaman(58) = (60 − 58) / 10 = 0.2  
+- μLembap(58) = (58 − 55) / 5 = 0.6  
+
+Rule aktif:  
+- Sedang & Nyaman → 0.2 → Output = Sedang (160)  
+- Sedang & Lembap → 0.6 → Output = Cepat (255)  
+
+Defuzzifikasi:  
+Output = (0.2×160 + 0.6×255) / (0.2+0.6)  
+Output = (32 + 153) / 0.8 = 185 / 0.8 ≈ 231.25  
+
+**Hasil: PWM ≈ 231 (dekat Cepat)**  
+
+---
+
+### Skenario 3 — Panas & Lembap
+
+- Input: Suhu tinggi, kelembapan lembap  
+- Fuzzifikasi: μ = 1  
+- Rule aktif: Tinggi & Lembap → Cepat (255)  
+
+Output = (1 × 255) / 1 = 255  
+
+**Hasil: PWM = 255 (Cepat penuh)**
+
+---
+
 ### Variabel Fuzzy
 
 - **Input 1: Suhu (°C)**
