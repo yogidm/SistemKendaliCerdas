@@ -219,13 +219,13 @@ Hasil: Kipas akan berputar dengan PWM ≈ 153.
 ### Alat dan Bahan
 - ESP32
 - Sensor DHT11
-- Kipas DC + driver MOSFET
+- Kipas DC + driver TIP41
 - Breadboard dan kabel jumper
-- Power supply sesuai motor
+- Power supply sesuai kebutuhan
 
 ### Wiring
-- DHT11 â†’ pin data ke GPIO 4 ESP32
-- Motor DC â†’ dikendalikan via MOSFET, PWM dari GPIO 5 ESP32
+- DHT11 -> pin data ke GPIO 4 ESP32
+- Motor DC -> dikendalikan via TIP41, PWM dari GPIO 5 ESP32
 - VCC dan GND sesuai kebutuhan
 
 ### Kode Program
@@ -307,6 +307,7 @@ void loop() {
 1. Jelaskan konsep fuzzy logic dalam mengontrol kecepatan kipas.  
 2. Ubah fungsi keanggotaan (range suhu/kelembapan) dan amati perubahan sistem.  
 3. Simulasikan beberapa nilai sensor dan lakukan perhitungan fuzzy manual untuk membandingkan hasil dengan program.
+4. Buat laporan dan analisanya. 
 
 ---
 
