@@ -1,4 +1,4 @@
-# SistemKendaliCerdas
+# Sistem Kendali Cerdas
 ---
 
 
@@ -135,7 +135,7 @@ Dalam sistem dehumidifier cerdas, fuzzy logic dapat digunakan untuk menentukan k
 
 ### Variabel Fuzzy
 
-- **Input 1: Suhu (Â°C)**
+- **Input 1: Suhu (°C)**
   - Rendah
   - Sedang
   - Tinggi
@@ -145,27 +145,29 @@ Dalam sistem dehumidifier cerdas, fuzzy logic dapat digunakan untuk menentukan k
   - Normal
   - Lembap
 
-- **Output: Kecepatan Kipas (PWM 0â€“255)**
+- **Output: Kecepatan Kipas (PWM 0-255)**
   - Lambat
   - Sedang
   - Cepat
 
 ### Fungsi Keanggotaan (Contoh)
 
-**Suhu (Â°C):**
-- Rendah: Î¼ = 1 pada â‰¤ 20, menurun linier ke 0 pada 25
-- Sedang: Î¼ = 0 pada 20 dan 30, puncak 1 pada 25
-- Tinggi: Î¼ = 0 pada 25, meningkat linier hingga 1 pada â‰¥ 30
+Suhu (°C):
 
-**Kelembapan (%):**
-- Kering: Î¼ = 1 pada â‰¤ 40, menurun ke 0 pada 50
-- Normal: Î¼ = 0 pada 40 dan 60, puncak 1 pada 50
-- Lembap: Î¼ = 0 pada 50, meningkat ke 1 pada â‰¥ 60
+- Rendah: μ = 1 pada ≤ 20, menurun linier ke 0 pada 25
 
-**Output (PWM):**
-- Lambat: sekitar 85
-- Sedang: sekitar 170
-- Cepat: sekitar 255
+- Sedang: μ = 0 pada 20 dan 30, puncak 1 pada 25
+
+- Tinggi: μ = 0 pada 25, meningkat linier hingga 1 pada ≥ 30
+
+
+Kelembapan (%):
+
+- Kering: μ = 1 pada ≤ 40, menurun ke 0 pada 50
+
+- Normal: μ = 0 pada 40 dan 60, puncak 1 pada 50
+
+- Lembap: μ = 0 pada 50, meningkat ke 1 pada ≥ 60
 
 ---
 
@@ -187,23 +189,28 @@ Dalam sistem dehumidifier cerdas, fuzzy logic dapat digunakan untuk menentukan k
 
 ## Perhitungan Fuzzy (Contoh)
 
-Misalkan hasil sensor: **Suhu = 28Â°C**, **Kelembapan = 65%**
+Misalkan hasil sensor: Suhu = 28 °C, Kelembapan = 65%
 
-1. **Fuzzyfikasi**
-   - Suhu 28Â°C â†’ Sedang (0.4), Tinggi (0.6)
-   - Kelembapan 65% â†’ Normal (0.0), Lembap (1.0)
+1. Fuzzyfikasi
 
-2. **Inferensi (Rule Matching)**
-   - Rule 6: Sedang âˆ§ Lembap â†’ min(0.4, 1.0) = 0.4 â†’ Output Cepat
-   - Rule 9: Tinggi âˆ§ Lembap â†’ min(0.6, 1.0) = 0.6 â†’ Output Cepat
+- Suhu 28 °C → Sedang (0.4), Tinggi (0.6)
+- Kelembapan 65% → Normal (0.0), Lembap (1.0)
 
-3. **Agregasi**
-   - Cepat mendapat keanggotaan max(0.4, 0.6) = 0.6
+2. Inferensi (Rule Matching)
 
-4. **Defuzzyfikasi (Metode Centroid)**
-   - Cepat â‰ˆ 255 Ã— 0.6 = 153 (mendekati kecepatan kipas sedangâ€“cepat)
+- Rule 6: Sedang ∧ Lembap → min(0.4, 1.0) = 0.4 → Output Cepat
+- Rule 9: Tinggi ∧ Lembap → min(0.6, 1.0) = 0.6 → Output Cepat
 
-**Hasil: Kipas akan berputar dengan PWM â‰ˆ 153.**
+3. Agregasi
+
+- Cepat mendapat keanggotaan max(0.4, 0.6) = 0.6
+
+4. Defuzzyfikasi (Metode Centroid)
+
+- Cepat ≈ 255 × 0.6 = 153 (mendekati kecepatan kipas sedang–cepat)
+
+Hasil: Kipas akan berputar dengan PWM ≈ 153.
+
 
 ---
 
