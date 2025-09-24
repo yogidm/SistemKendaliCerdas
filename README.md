@@ -2,7 +2,7 @@
 ---
 
 
-# Fuzzy Logic ESP32 dengan DHT11, Motor DC, dan LED Indikator
+# Jobsheet 1: Fuzzy Logic ESP32 dengan DHT11, Motor DC, dan LED Indikator
 
 Proyek ini menggunakan **ESP32** untuk mengimplementasikan logika fuzzy sederhana dalam mengontrol kecepatan motor DC (sebagai kipas angin) berdasarkan suhu yang dibaca dari sensor **DHT11**. Selain itu, terdapat indikator LED (merah, kuning, hijau) yang menunjukkan kondisi suhu dingin, hangat, atau panas.
 
@@ -125,7 +125,7 @@ void loop() {
 
 ---
 
-# Jobsheet 3: Smart Dehumidifier dengan Fuzzy Logic
+# Jobsheet 2: Smart Dehumidifier dengan Fuzzy Logic
 
 ## Dasar Teori
 
