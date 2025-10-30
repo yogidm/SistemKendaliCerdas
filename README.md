@@ -961,6 +961,21 @@ print(f"Prediksi suhu untuk kelembapan {kelembapan_baru[0][0]:.1f}% = {prediksi_
 
 # JST Feedforward untuk Klasifikasi Keadaan Ruangan
 
+Input: Suhu dan kelembapan
+
+Output: Kelas (Normal, Panas, Lembap)
+JST:
+- Input layer: 2 neuron
+- Hidden layer: 6 neuron
+- Output layer: 3 neuron (karena 3 kelas)
+
+Data Train: Bisa menggunakan hasil file CSV dari data logger DHT11
+  
+Data Dummy: Dibuat acak dengan logika sederhana untuk simulasi realistis
+
+Evaluasi: Menampilkan akurasi dan decision boundary hasil JST
+
+
 ```python
 # =========================================================
 # JST Feedforward untuk Klasifikasi Keadaan Ruangan
@@ -1206,17 +1221,6 @@ save_weights_to_header("jst_weights.h", w1, b1, w2, b2)
     ✅ Bobot berhasil disimpan di: jst_weights.h
     
 
-Input: Suhu dan kelembapan
-
-Output: Kelas (Normal, Panas, Lembap)
-JST:
-- Input layer: 2 neuron
-- Hidden layer: 6 neuron
-- Output layer: 3 neuron (karena 3 kelas)
-  
-Data Dummy: Dibuat acak dengan logika sederhana untuk simulasi realistis
-
-Evaluasi: Menampilkan akurasi dan decision boundary hasil JST
 
 ---
 
