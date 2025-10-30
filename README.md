@@ -789,8 +789,7 @@ plt.show()
     [1 1] -> 0.0169
     
 
-    C:\Users\akung\AppData\Local\Temp\ipykernel_2256\3475901153.py:64: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
-      print(f"{x} -> {float(y_pred):.4f}")
+  
     
 
 
