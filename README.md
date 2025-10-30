@@ -954,12 +954,16 @@ print(f"Prediksi suhu untuk kelembapan {kelembapan_baru[0][0]:.1f}% = {prediksi_
 
 
     Prediksi suhu untuk kelembapan 60.0% = 30.22 °C
-    
 
+
+---
+
+
+# JST Feedforward untuk Klasifikasi Keadaan Ruangan
 
 ```python
 # =========================================================
-# 🧠 JST Feedforward untuk Klasifikasi Keadaan Ruangan
+# JST Feedforward untuk Klasifikasi Keadaan Ruangan
 # Input  : Suhu (°C) dan Kelembapan (%)
 # Output : Kelas (0=Normal, 1=Panas, 2=Lembap)
 # =========================================================
