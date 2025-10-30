@@ -429,7 +429,7 @@ void loop() {
 
 ---
 
-# Jobsheet: Implementasi Jaringan Syaraf Tiruan (JST) pada ESP32
+# Jobsheet 3 - Implementasi Jaringan Syaraf Tiruan (JST) pada ESP32
 
 Mahasiswa mampu memahami konsep JST, melakukan pelatihan model JST menggunakan Python, dan merealisasikan hasil pelatihan ke perangkat mikrokontroler ESP32 melalui komunikasi serial.
 
