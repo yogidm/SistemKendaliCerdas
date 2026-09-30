@@ -1,6 +1,7 @@
 # Sistem Kendali Cerdas
 ---
 
+# Simulasinya ada disini -> https://github.com/yogidm/SistemKendaliCerdas/blob/main/Fuzzy%20NN%20GA.py
 
 # Jobsheet 1: Fuzzy Logic ESP32 dengan DHT11, Motor DC, dan LED Indikator
 
