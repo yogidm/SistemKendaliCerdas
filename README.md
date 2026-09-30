@@ -3,6 +3,13 @@
 
 # Simulasinya ada disini -> https://github.com/yogidm/SistemKendaliCerdas/blob/main/Fuzzy%20NN%20GA.py
 
+## install library ini dulu via pip di terminal, baru dirun di python
+
+```
+pip install numpy matplotlib
+
+```
+
 # Jobsheet 1: Fuzzy Logic ESP32 dengan DHT11, Motor DC, dan LED Indikator
 
 Proyek ini menggunakan **ESP32** untuk mengimplementasikan logika fuzzy sederhana dalam mengontrol kecepatan motor DC (sebagai kipas angin) berdasarkan suhu yang dibaca dari sensor **DHT11**. Selain itu, terdapat indikator LED (merah, kuning, hijau) yang menunjukkan kondisi suhu dingin, hangat, atau panas.
